@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baseball Player Performance</title>
+  <!-- Bootstrap -->
+  <link href="./lib/bootstrap.min.css" rel="stylesheet">
+  <script src="./lib/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/baseball.css">
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="./lib/jquery-2.2.3.min.js"></script>
+  
+  <script src="./lib/d3.v3.min.js"></script>
+  <script src="./lib/dimple.v2.0.0.min.js"></script>
+  <script type="text/csv" src="./data/baseball_data.csv"></script>
+
+  <script type="text/javascript" src="./js/baseball.js"></script>
+  <style>
+
+    .chart div {
+      font: 10px sans-serif;
+      background-color: steelblue;
+      text-align: right;
+      padding: 3px;
+      margin: 1px;
+      color: white;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+  <h1 class="main-title">Effect of Handedness, Weight and Height on Batting Average and Homeruns</h1>
+  <div class="main">
+
+    <h2>General Statistics</h2>
+    
+    <table class="table">
+      <tr>
+        <td>Total Players</td><td id="TotalPlayersOutput"></td>
+      </tr>
+      <tr>
+        <td>Number of Players with 0% batting average</td><td id="ZeroBattingAvgOutput">0</td>
+      </tr>
+      <tr>
+        <td>Number of Players with 0 homeruns</td><td id="ZeroHomerunsOutput"></td>
+      </tr>
+    </table>
+    
+    <div>More than a quarter of the players have no batting average. It is very likely that those players never have batted. It is most common that pitchers in the team never get to bat. Unfortunately the data set contains only the batting average, but not the number of actual attempts, so we can not be sure about whether they all never bat or not.</div>
+    <div>This can give a wrong impression when creating charts, therefore the batters with zero avg are filtered. Each diagram shows an animation between the complete dataset and the data without the "non-batters"</div>
+    
+    <h2>Batting Average and Homeruns by Batters Handedness</h2>
+
+    <div id="ChartOne"></div>
+    <h3>Findings:</h3>
+    <div>The chart shows that the left handed as well as the both handed batters hit better than the right handed batters. Moreover, the left handed batters achieve on average about 56 homeruns (69 - non-batters excluded), whereas the right handed batters and both handed batters in comparison achieve less homeruns. 
+    </div>
+
+    <h2>Batting Average and Homeruns by Batters Weight</h2>
+    <div id="ChartTwo"></div>
+    <h3>Findings:</h3>
+    <div>The weight and height is not evenly distributed among the players (e.g. there is only one player with weight > 240 lbs), therefore quantiles are used to calculate the average of groups with the same size. According to the chart there exists a correlation between homeruns and weight. The number of homeruns grows with increasing weight. An explanation for this observation would be that batters weight more because of their muscles. More muscles enable batters to hit the ball hard enough to achieve homeruns. Moreover, the chart shows a relative strong correlation between the batting average and batters weight: Batters with less weight seem more agile and achieve better in batting average against their counterparts. But this holds only when looking at the unfiltered data. The filtered data shows that the batting average is not at all correlating to the weight.
+    </div>
+
+    <h2>Batting Average and Homeruns by Batters Height</h2>
+    <div id="ChartThree"></div>
+    <h3>Findings:</h3>
+    <div>Like the previous chart there are different outcomes when comparing the data of the filtered data and the one without any filtering. The chart shows a relatively weak correlation between batters height and homeruns. The correlation becomes more clear when filtering out the non-batters. When looking at the batting average, the height has no influence, filtering out the non-batters. Including all the data the batting average of tall players is a little less than the one of smaller players.
+
+  </div>
+</div>
+
+
+</body>
+</html>
